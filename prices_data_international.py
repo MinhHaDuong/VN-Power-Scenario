@@ -11,7 +11,7 @@ Data come from World Bank forecasts
 
 #import sys
 from init import pd, start_year
-from scipy.interpolate import lagrange
+from prices_conversion import USD_Mkal__USD_MMBtu, international_Mkal_ton
 #import matplotlib.pyplot as plt
 import numpy as np
 
@@ -54,5 +54,8 @@ for i in range(2031-2026):
      interpol_coal_price.append(m_coal * (i+2026) + p_coal)
      interpol_gas_price.append(m_gas * (i+2026) + p_gas)
 
-international_prices = pd.DataFrame({'Coal': interpol_coal_price, 'Gas': interpol_gas_price},index=index)
+international_prices = pd.DataFrame({'nc_Coal': interpol_coal_price, 'nc_Gas': interpol_gas_price},index=index)
 
+#Converting prices from data source unit to USD/MBtu
+international_prices['c_Coal'] = round(international_prices['nc_Coal'] * USD_Mkal__USD_MMBtu / international_Mkal_ton,2)
+international_prices['c_Gas'] = international_prices['nc_Gas']
