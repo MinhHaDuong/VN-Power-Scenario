@@ -47,4 +47,4 @@ local_production = pd.DataFrame({'nc_Coal': interpol_coal_production, 'nc_Gas': 
 local_production['c_Coal'] = round(local_production['nc_Coal'] * thousTon_Ton * local_Mkal_ton * Mkal__MMBtu,2)
 local_production['c_Gas'] = round(local_production['nc_Gas'] *local_millioncubicmeter_TOE * TOE__MMBtu,2)
 
-print(local_production)
+

@@ -7,6 +7,8 @@ Created on Mon Jan  8 11:44:08 2018
 Prices are in $/mt (in 2017 US dollars and metric ton) for Coal based on Australian prices and in $/mmbtu for Gas based on Japan prices. 
 
 Data come from World Bank forecasts
+
+ISSUES TO SOLVE : What happens for 2015 ? (We are not interested in this year -> to araise)
 """
 
 #import sys
@@ -42,10 +44,10 @@ m_gas = (y_gas[-1]-y_gas[-2])/(x[-1]-x[-2])
 p_coal = y_coal[-1] - m_coal * x[-1]
 p_gas = y_gas[-1] - m_gas * x[-1]
  
-for i in range(2026-start_year+1):
-    index.append(x[i])
-    interpol_coal_price.append(y_coal[i])
-    interpol_gas_price.append(y_gas[i])
+for i in range(2026-start_year):
+    index.append(x[i+1])
+    interpol_coal_price.append(y_coal[i+1])
+    interpol_gas_price.append(y_gas[i+1])
  
  #Between 2025 and 2030 : Linear interpolation
  
@@ -59,3 +61,5 @@ international_prices = pd.DataFrame({'nc_Coal': interpol_coal_price, 'nc_Gas': i
 #Converting prices from data source unit to USD/MBtu
 international_prices['c_Coal'] = round(international_prices['nc_Coal'] * USD_Mkal__USD_MMBtu / international_Mkal_ton,2)
 international_prices['c_Gas'] = international_prices['nc_Gas']
+
+#print(international_prices)
