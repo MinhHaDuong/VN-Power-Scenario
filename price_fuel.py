@@ -52,13 +52,13 @@ class Fuel_Price(namedtuple('Fuel_Price',
         return super().__new__(cls, index, local_prices, international_prices, local_production, needed_production, needed_importation, average_price)
     
     def plot_coal_supply(self, ax, legend=True):
-        self.needed_production['Coal'].plot(ax=ax, title="Coal supply for the electric system (in BTu)", label= "Coal needs")
+        self.needed_production['Coal'].plot(ax=ax, title="Coal supply for the electric system (in MMBTu)", label= "Coal needs")
         self.local_production["c_Coal"].plot(ax=ax, label="Coal producted in Vietnam")
         self.needed_importation["c_Coal"].plot(ax=ax, label="Coal imported")
         
     
     def plot_coal_price(self, ax, legend=True):
-        self.average_price['Coal'].plot(ax=ax, title="Coal price (in USD/BTu)", label="Average price of Coal for the electric system")
+        self.average_price['Coal'].plot(ax=ax, title="Coal price (in USD/MMBTu)", label="Average price of Coal for the electric system")
         self.local_prices['c_Coal'].plot(ax=ax, label="Coal produced in Vietnam")
         self.international_prices["c_Coal"].plot(ax=ax, label="Imported Coal (Australia)")
         
@@ -76,13 +76,13 @@ class Fuel_Price(namedtuple('Fuel_Price',
         fig.savefig(filename+ '_Coal')
         
     def plot_gas_supply(self, ax, legend=True):
-        self.needed_production['Gas'].plot(ax=ax, title="Gas supply for the electric system (in BTu)", label= "Gas needs")
+        self.needed_production['Gas'].plot(ax=ax, title="Gas supply for the electric system (in MMBTu)", label= "Gas needs")
         self.local_production["c_Gas"].plot(ax=ax, label="Gas producted in Vietnam")
         self.needed_importation["c_Gas"].plot(ax=ax, label="Gas imported")
         
     
     def plot_gas_price(self, ax, legend=True):
-        self.average_price['Gas'].plot(ax=ax, title="Gas price (in USD/BTu)", label="Average price of Gas for the electric system")
+        self.average_price['Gas'].plot(ax=ax, title="Gas price (in USD/MMBTu)", label="Average price of Gas for the electric system")
         self.local_prices['c_Gas'].plot(ax=ax, label="Gas produced in Vietnam")
         self.international_prices["c_Gas"].plot(ax=ax, label="Imported Gas (Japan)")
         
@@ -99,26 +99,28 @@ class Fuel_Price(namedtuple('Fuel_Price',
         plt.subplots_adjust(top=0.94)
         fig.savefig(filename+ '_Gas')
     
+
     def summarize(self):
-        """Print object's summary."""
-        print(self.summary())
-        
-    def summary(self):
-        """Summary of a power development program, time series shown for key years only."""
+        """Summary of Coal and Gas supply and prices."""
         milestones = [start_year, 2020, 2025, 2030]
-        return (
-            "Coal supply (in Btu)\n"
-            + str(self.needed_production.loc[milestones, 'Coal'].round()) 
-            + str(self.needed_importation.loc[milestones, 'c_Coal'].round()) 
-            + str(self.local_production.loc[milestones, 'c_Coal'])+ '\n\n')
-#            + "Old capacity retirement by fuel type (MW)\n"
-#            + str(self.retirement.loc[milestones, fuels].round()) + '\n\n'
-#            + "Generation capacity by fuel type (MW)\n"
-#            + str(self.capacities.loc[milestones, technologies].round()) + '\n\n'
-#            + "Electricity production (GWh)\n"
-#            + str(self.production.loc[milestones].round()) + '\n\n'
-#            + "Capacity factors\n"
-#            + str(self.capacity_factor.loc[milestones].round(2)) + '\n')
-        #print(self.international_prices)
-        #print(self.local_prices)
-        #print(self.average_price)
+        
+        supply_coal = pd.DataFrame({'Coal imported': self.needed_importation['c_Coal']/10**8, 'Coal locally produced': self.local_production['c_Coal']/10**8, 'Coal needs': self.needed_production['Coal']/10**8})
+        prices_coal = pd.DataFrame({'Average coal price': self.average_price['Coal'], 'Local coal price': self.local_prices['c_Coal'], 'Imported coal price': self.international_prices["c_Coal"]})
+        supply_gas = pd.DataFrame({'Gas needs': self.needed_production['Gas']/10**8, 'Gas locally produced': self.local_production['c_Gas']/10**8, 'Gas imported': self.needed_importation['c_Gas']/10**8})
+        prices_gas = pd.DataFrame({'Average gas price': self.average_price['Gas'], 'Local gas price': self.local_prices['c_Gas'], 'Imported gas price': self.international_prices["c_Gas"]})
+        
+        return (print(
+            "Coal supply (in E+8 MMBtu)\n"
+            + str(supply_coal.loc[milestones].round()) + '\n\n'
+            +"Coal prices (in $/MMBtu)\n"
+            + str(prices_coal.loc[milestones].round()) + '\n\n'
+            +"Gas supply (in E+8 MMBtu)\n"
+            + str(supply_gas.loc[milestones].round()) + '\n\n'
+            +"Gas prices (in $/MMBtu)\n"
+            + str(prices_gas.loc[milestones].round()) + '\n\n'
+            ))
+
+
+            #print(self.international_prices)
+            #print(self.local_prices)
+            #print(self.average_price)
