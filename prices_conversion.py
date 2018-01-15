@@ -23,11 +23,11 @@ thousTon_Ton = 10**3
 
 #Calorific power
 
-#Local Coal:    
+#Local Coal:
 local_Mkal_ton = 5500
 
 #local Gas:
 local_millioncubicmeter_TOE = 0.9 * 10**3
 
-#International Coal: 
+#International Coal:
 international_Mkal_ton = 6700
