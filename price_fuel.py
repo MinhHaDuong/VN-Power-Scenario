@@ -113,6 +113,10 @@ class Fuel_Price(namedtuple('Fuel_Price',
         fig.savefig(filename+ '_Gas')
 
     def summarize(self):
+        """Print object's summary."""
+        print(self.summary())
+
+    def summary(self):
         """Summary of Coal and Gas supply and prices."""
         milestones = [start_year, 2020, 2025, 2030]
 
@@ -132,7 +136,7 @@ class Fuel_Price(namedtuple('Fuel_Price',
                                    'Local gas price': self.local_prices['c_Gas'],
                                    'Imported gas price': self.international_prices["c_Gas"]})
 
-        return (print(
+        return (
             "Coal supply (in E+8 MMBtu)\n"
             + str(supply_coal.loc[milestones].round()) + '\n\n'
             +"Coal prices (in $/MMBtu)\n"
@@ -141,7 +145,7 @@ class Fuel_Price(namedtuple('Fuel_Price',
             + str(supply_gas.loc[milestones].round()) + '\n\n'
             +"Gas prices (in $/MMBtu)\n"
             + str(prices_gas.loc[milestones].round()) + '\n\n'
-            ))
+            )
 
 
             #print(self.international_prices)
