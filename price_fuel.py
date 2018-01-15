@@ -77,7 +77,7 @@ class Fuel_Price(namedtuple('Fuel_Price',
         self.international_prices["c_Coal"].plot(ax=ax, label="Imported Coal (Australia)")
 
     def plot_coal_information(self, filename):
-        """Two panels plot to describe Gas origin and price of the electric system"""
+        """Describe Gas origin and price of the electric system."""
         fig, (ax1, ax2) = plt.subplots(2, 1, figsize=[10, 15], sharex=True)
         fig.suptitle('Coal supply and price for the electric system', fontsize=15)
         self.plot_coal_price(ax1)
@@ -101,16 +101,22 @@ class Fuel_Price(namedtuple('Fuel_Price',
         self.international_prices["c_Gas"].plot(ax=ax, label="Imported Gas (Japan)")
 
     def plot_gas_information(self, filename):
-        """Two panels plot to describe Gas origin and price of the electric system"""
+        """Describe Gas origin and price of the electric system."""
         fig, (ax1, ax2) = plt.subplots(2, 1, figsize=[10, 15], sharex=True)
         fig.suptitle('Gas supply and price for the electric system', fontsize=15)
-        self.plot_gas_price(ax1)
-        self.plot_gas_supply(ax2)
+
         ax1.legend(loc="upper left")
         ax2.legend(loc="upper left")
         fig.tight_layout()
         plt.subplots_adjust(top=0.94)
         fig.savefig(filename+ '_Gas')
+
+    def plot_information(self, filename):
+        """Gather gas and coal informations of the electric system."""
+        fig, (ax1, ax2) = plt.subplots(2, 1, figsize=[15, 10])
+        self.plot_gas_information(ax1)
+        self.plot_coal_information(ax2)
+        fig.savefig(filename)
 
     def summarize(self):
         """Print object's summary."""

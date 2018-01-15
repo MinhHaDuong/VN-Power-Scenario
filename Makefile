@@ -8,7 +8,7 @@
 PYTHON = python3
 
 
-tables = table-parameters.fwf table-comparison.fwf
+tables = table-parameters.fwf table-comparison.fwf table-price-run.fwf
 
 figures = plan_baseline.pdf plan_withCCS.pdf figure-capacities.pdf figure-capacities.png
 
@@ -23,6 +23,8 @@ table-parameters.fwf: param_reference.txt
 
 table-comparison.fwf: Run.txt
 	head -26 $< | tail -16 > $@
+
+table-price-run.fwf: production_needed_baseline.txt
 
 %.txt: %.py
 	@-sed -i "s/VERBOSE = True/VERBOSE = False/" init.py
@@ -69,7 +71,7 @@ clean:
 
 cleaner: clean
 	find . -type f -name '*.pyc' -delete
-	rm -f Run.txt param_reference.txt 
+	rm -f Run.txt param_reference.txt table-price-run.txt
 	rm -rf __pycache__
 	rm -f *.bak
 	rm -rf .coverage coverage.xml htmlcov

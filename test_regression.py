@@ -56,4 +56,4 @@ def test_prices_summary(regtest):
     regtest.write(average_price.summary())
 
 def updated_model(regtest):
-    regtest(run_model.summary())
+    regtest.write(run_model.summary())
