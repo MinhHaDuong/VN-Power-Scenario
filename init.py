@@ -6,6 +6,8 @@
 # (c) Minh Ha-Duong, 2017
 # minh.haduong@gmail.com
 # Creative Commons Attribution-ShareAlike 4.0 International
+# Modified by Alice Duval, 2018
+#Energy converter used is: www.iea.org/statistics/resources/unitconverter/
 #
 """Common functions, units.
 
@@ -118,6 +120,28 @@ t = 1000
 kt = 10**6
 Mt = 10**9
 Gt = 10**12
+
+#Energy units conversion
+
+USD_Mkal__USD_MMBtu = 5500/21.83
+MMBTu__Btu = 10**6
+Mkal__MMBtu = 21.83/5500
+TOE__MMBtu = 35.7/0.9
+
+#quantity conversion
+
+thousTon_Ton = 10**3
+
+#Calorific power
+
+#Local Coal:
+local_Mkal_ton = 5500
+
+#local Gas:
+local_millioncubicmeter_TOE = 0.9 * 10**3
+
+#International Coal:
+international_Mkal_ton = 6700
 
 #
 #def timefunc(f):

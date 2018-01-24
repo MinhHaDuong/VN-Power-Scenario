@@ -14,8 +14,7 @@ Data are available twice :
 from collections import namedtuple
 import numpy as np
 import matplotlib.pyplot as plt
-from prices_conversion import USD_Mkal__USD_MMBtu, international_Mkal_ton
-from init import pd, start_year
+from init import pd, start_year, USD_Mkal__USD_MMBtu, international_Mkal_ton
 
 class Fuel_Price(namedtuple('Fuel_Price',
                            ['index',
@@ -65,19 +64,21 @@ class Fuel_Price(namedtuple('Fuel_Price',
                     needed_production, needed_importation, average_price)
 
     def plot_coal_supply(self, ax):
+        """Describe Coal supply of the electric system."""
         self.needed_production['Coal'].plot(ax=ax, title="Coal supply \
                               for the electric system (in MMBTu)", label="Coal needs")
         self.local_production["c_Coal"].plot(ax=ax, label="Coal producted in Vietnam")
         self.needed_importation["c_Coal"].plot(ax=ax, label="Coal imported")
 
     def plot_coal_price(self, ax):
-        self.average_price['Coal'].plot(ax=ax, title="Coal price (in USD/MMBTu)", label="Average \
-                          price of Coal for the electric system")
+        """Describe Coal price of the electric system."""
+        self.average_price['Coal'].plot(ax=ax, title="Coal price (in USD/MMBTu)",
+                          label="Average price of Coal for the electric system")
         self.local_prices['c_Coal'].plot(ax=ax, label="Coal produced in Vietnam")
         self.international_prices["c_Coal"].plot(ax=ax, label="Imported Coal (Australia)")
 
     def plot_coal_information(self, filename):
-        """Describe Gas origin and price of the electric system."""
+        """Describe Coal origin and price of the electric system."""
         fig, (ax1, ax2) = plt.subplots(2, 1, figsize=[10, 15], sharex=True)
         fig.suptitle('Coal supply and price for the electric system', fontsize=15)
         self.plot_coal_price(ax1)
@@ -89,14 +90,17 @@ class Fuel_Price(namedtuple('Fuel_Price',
         fig.savefig(filename+ '_Coal')
 
     def plot_gas_supply(self, ax):
-        self.needed_production['Gas'].plot(ax=ax, title="Gas supply for the electric system\
-                              (in MMBTu)", label="Gas needs")
+        """Describe Gas supply of the electric system."""
+        self.needed_production['Gas'].plot(ax=ax,
+                              title="Gas supply for the electric system (in MMBTu)",
+                              label="Gas needs")
         self.local_production["c_Gas"].plot(ax=ax, label="Gas producted in Vietnam")
         self.needed_importation["c_Gas"].plot(ax=ax, label="Gas imported")
 
     def plot_gas_price(self, ax):
-        self.average_price['Gas'].plot(ax=ax, title="Gas price (in USD/MMBTu)", label="Average \
-                          price of Gas for the electric system")
+        """Describe Gas price of the electric system."""
+        self.average_price['Gas'].plot(ax=ax, title="Gas price (in USD/MMBTu)",
+                          label="Average price of Gas for the electric system")
         self.local_prices['c_Gas'].plot(ax=ax, label="Gas produced in Vietnam")
         self.international_prices["c_Gas"].plot(ax=ax, label="Imported Gas (Japan)")
 
@@ -104,7 +108,8 @@ class Fuel_Price(namedtuple('Fuel_Price',
         """Describe Gas origin and price of the electric system."""
         fig, (ax1, ax2) = plt.subplots(2, 1, figsize=[10, 15], sharex=True)
         fig.suptitle('Gas supply and price for the electric system', fontsize=15)
-
+        self.plot_gas_price(ax1)
+        self.plot_gas_supply(ax2)
         ax1.legend(loc="upper left")
         ax2.legend(loc="upper left")
         fig.tight_layout()

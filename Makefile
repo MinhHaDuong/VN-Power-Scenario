@@ -37,17 +37,17 @@ table-price-run.fwf: production_needed_baseline.txt
 	$(PYTHON) $< plot $@
 
 test: cleaner
-	py.test-3 --doctest-modules
+	py.test --doctest-modules
 
 coverage: coverage.xml
 	python3.5-coverage html
 	see htmlcov/index.html
 
 coverage.xml:
-	py.test-3 --doctest-modules --cov=. --cov-report term-missing --cov-report xml
+	py.test --doctest-modules --cov=. --cov-report term-missing --cov-report xml
 
 regtest-reset:
-	py.test-3 --regtest-reset
+	py.test --regtest-reset
 
 lint:
 	pylint3 *py

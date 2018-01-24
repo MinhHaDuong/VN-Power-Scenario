@@ -8,7 +8,7 @@ Energy unit (for Gas and Coal) is Btu
 
 """
 import sys
-from init import pd, start_year, sources
+from init import pd, start_year, end_year, sources
 from plan_baseline import baseline
 from param_reference import discount_rate, plant_accounting_life, construction_cost,\
 fixed_operating_cost, variable_operating_cost, heat_rate, heat_price,\
@@ -21,10 +21,10 @@ from Run import Run
 from Parameter import Parameter
 
 # electric production is in Gwh
-electric_production = baseline.production[['Coal', 'Gas']].loc[start_year:2030]
+electric_production = baseline.production[['Coal', 'Gas']].loc[start_year:end_year+1]
 
 # Heat_rate is in Btu/kWh or in MMBtu/Gwh
-useful_heat_rate = heat_rate[['Coal', 'Gas']].loc[start_year:2030]
+useful_heat_rate = heat_rate[['Coal', 'Gas']]
 
 #needed_energy is in MMBtu here
 
@@ -33,7 +33,8 @@ needed_energy = pd.DataFrame(electric_production.values*useful_heat_rate.values,
 
 #Here: No need to convert: Values are already in MBtu
 
-index = list(range(start_year, 2031))
+index = list(range(start_year, end_year+1))
+
 average_price = Fuel_Price(index, local_prices, international_prices, local_production,
                            needed_energy)
 
@@ -41,8 +42,7 @@ updated_heat_price = pd.DataFrame(columns=heat_price.columns, index=heat_price.i
 
 for fuel in sources:
     if fuel == "Coal" or fuel == "Gas":
-        updated_heat_price[fuel].loc[start_year:2030] = average_price.average_price[fuel]
-        updated_heat_price[fuel].loc[2031:2050] = heat_price[fuel].loc[2031:2050]
+        updated_heat_price[fuel] = average_price.average_price[fuel]
     else:
         updated_heat_price[fuel] = heat_price[fuel]
 

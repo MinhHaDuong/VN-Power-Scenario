@@ -13,8 +13,7 @@ ISSUES TO SOLVE : What happens for 2015 ? (We are not interested in this year ->
 """
 
 import numpy as np
-from init import pd, start_year
-from prices_conversion import USD_Mkal__USD_MMBtu, international_Mkal_ton
+from init import pd, start_year, end_year, USD_Mkal__USD_MMBtu, international_Mkal_ton
 
 #Collect of data
 international_prices_data = pd.read_csv("data/Oil&Gas_prices/data_prices_international.csv",
@@ -43,18 +42,20 @@ m_gas = (y_gas[-1]-y_gas[-2])/(x[-1]-x[-2])
 p_coal = y_coal[-1] - m_coal * x[-1]
 p_gas = y_gas[-1] - m_gas * x[-1]
 
-for i in range(2026-start_year):
-    index.append(x[i+1])
-    interpol_coal_price.append(y_coal[i+1])
-    interpol_gas_price.append(y_gas[i+1])
-
-for i in range(2031-2026):
-    index.append(i+2026)
-    interpol_coal_price.append(m_coal * (i+2026) + p_coal)
-    interpol_gas_price.append(m_gas * (i+2026) + p_gas)
+for i in range(start_year, end_year+1):
+    if i <= 2025:
+        interpol_coal_price.append(y_coal[i-start_year])
+        interpol_gas_price.append(y_gas[i-start_year])
+    elif i <= 2030:
+        interpol_coal_price.append(m_coal * (i) + p_coal)
+        interpol_gas_price.append(m_gas * (i) + p_gas)
+    else:
+        interpol_coal_price.append(interpol_coal_price[-1])
+        interpol_gas_price.append(interpol_gas_price[-1])
 
 international_prices = pd.DataFrame({'nc_Coal': interpol_coal_price,
-                                      'nc_Gas': interpol_gas_price}, index=index)
+                                      'nc_Gas': interpol_gas_price},
+    index=range(start_year, end_year+1))
 
 #Converting prices from data source unit to USD/MBtu
 international_prices['c_Coal'] = round(international_prices['nc_Coal']
