@@ -44,8 +44,8 @@ p_gas = y_gas[-1] - m_gas * x[-1]
 
 for i in range(start_year, end_year+1):
     if i <= 2025:
-        interpol_coal_price.append(y_coal[i-start_year])
-        interpol_gas_price.append(y_gas[i-start_year])
+        interpol_coal_price.append(y_coal[i-start_year+1])
+        interpol_gas_price.append(y_gas[i-start_year+1])
     elif i <= 2030:
         interpol_coal_price.append(m_coal * (i) + p_coal)
         interpol_gas_price.append(m_gas * (i) + p_gas)
