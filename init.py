@@ -111,6 +111,9 @@ TWh = 10**12
 Btu = 1
 MBtu = 10**6
 TBtu = 10**12
+Mkal = 3969
+TOE = 39.7 * 10**6
+
 USD = 1
 MUSD = 10**6
 GUSD = 10**9
@@ -121,6 +124,25 @@ kt = 10**6
 Mt = 10**9
 Gt = 10**12
 
+MM3 = 10**6
+
+#%% Calorific power
+
+Calo_coal_local = 5500 * Mkal / t
+Calo_coal_international = 6700 * Mkal / t
+Calo_gas_local = 35700
+
+# A SUPPRIMER !!!! 
+#Calorific power
+
+#Local Coal:
+local_Mkal_ton = 5500
+
+#local Gas:
+local_millioncubicmeter_TOE = 0.9 * 10**3
+
+#International Coal:
+international_Mkal_ton = 6700
 #Energy units conversion
 
 USD_Mkal__USD_MMBtu = 5500/21.83
@@ -132,16 +154,7 @@ TOE__MMBtu = 35.7/0.9
 
 thousTon_Ton = 10**3
 
-#Calorific power
 
-#Local Coal:
-local_Mkal_ton = 5500
-
-#local Gas:
-local_millioncubicmeter_TOE = 0.9 * 10**3
-
-#International Coal:
-international_Mkal_ton = 6700
 
 #
 #def timefunc(f):

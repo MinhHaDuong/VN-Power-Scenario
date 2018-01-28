@@ -10,8 +10,7 @@ Productions are in 1000t for Coal and in Million M3 for Gas.
 
 import numpy as np
 from scipy.interpolate import lagrange
-from init import pd, start_year, end_year, thousTon_Ton, Mkal__MMBtu, local_Mkal_ton, \
-local_millioncubicmeter_TOE, TOE__MMBtu
+from init import pd, start_year, end_year, Calo_coal_local, Calo_gas_local, kt, MM3
 
 #Collect of data
 local_production_data = pd.read_csv("data/Oil&Gas_prices/data_production_local.csv",
@@ -19,8 +18,8 @@ local_production_data = pd.read_csv("data/Oil&Gas_prices/data_production_local.c
 local_production_data.columns = ["Coal", "Gas"]
 
 x = np.array(local_production_data.index)
-y_coal = np.array(local_production_data.Coal)
-y_gas = np.array(local_production_data.Gas)
+y_coal = np.array(local_production_data.Coal) * kt * Calo_coal_local
+y_gas = np.array(local_production_data.Gas) * MM3 * Calo_gas_local
 
 #interpolation of data with a langrangian polynom
 
@@ -40,12 +39,5 @@ for i in range(start_year, end_year+1):
         interpol_coal_production.append(interpol_coal_production[-1])
         interpol_gas_production.append(interpol_gas_production[-1])
 
-local_production = pd.DataFrame({'nc_Coal': interpol_coal_production,
- 'nc_Gas': interpol_gas_production}, index=range(start_year, end_year+1))
-
-#Converting units from data source unit to Btu
-
-local_production['c_Coal'] = round(local_production['nc_Coal']
-                                    * thousTon_Ton * local_Mkal_ton * Mkal__MMBtu, 2)
-local_production['c_Gas'] = round(local_production['nc_Gas']
-                                    *local_millioncubicmeter_TOE * TOE__MMBtu, 2)
+local_production = pd.DataFrame({'Coal': interpol_coal_production,
+ 'Gas': interpol_gas_production}, index=range(start_year, end_year+1))

@@ -13,7 +13,7 @@ ISSUES TO SOLVE : What happens for 2015 ? (We are not interested in this year ->
 """
 
 import numpy as np
-from init import pd, start_year, end_year, USD_Mkal__USD_MMBtu, international_Mkal_ton
+from init import pd, start_year, end_year, t, MBtu, Calo_coal_international
 
 #Collect of data
 international_prices_data = pd.read_csv("data/Oil&Gas_prices/data_prices_international.csv",
@@ -22,8 +22,8 @@ international_prices_data = pd.read_csv("data/Oil&Gas_prices/data_prices_interna
 international_prices_data.columns = ["Coal", "Gas"]
 
 x = np.array(international_prices_data.index)
-y_coal = np.array(international_prices_data.Coal)
-y_gas = np.array(international_prices_data.Gas)
+y_coal = np.array(international_prices_data.Coal) / (Calo_coal_international * t)
+y_gas = np.array(international_prices_data.Gas) / MBtu
 
 #interpolation of data with a langrangian polynom
 
@@ -53,11 +53,8 @@ for i in range(start_year, end_year+1):
         interpol_coal_price.append(interpol_coal_price[-1])
         interpol_gas_price.append(interpol_gas_price[-1])
 
-international_prices = pd.DataFrame({'nc_Coal': interpol_coal_price,
-                                      'nc_Gas': interpol_gas_price},
+international_prices = pd.DataFrame({'Coal': interpol_coal_price,
+                                      'Gas': interpol_gas_price},
     index=range(start_year, end_year+1))
 
-#Converting prices from data source unit to USD/MBtu
-international_prices['c_Coal'] = round(international_prices['nc_Coal']
-                                        * USD_Mkal__USD_MMBtu / international_Mkal_ton, 2)
-international_prices['c_Gas'] = international_prices['nc_Gas']
+

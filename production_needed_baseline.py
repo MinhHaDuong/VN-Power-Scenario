@@ -68,3 +68,7 @@ if __name__ == '__main__':
     if (len(sys.argv) == 3) and (sys.argv[1] == "plot"):
         average_price.plot_coal_information(sys.argv[2])
         average_price.plot_gas_information(sys.argv[2])
+        print(average_price.needed_importation)
+        print(average_price.needed_production)
+        print(average_price.local_production)
+        
