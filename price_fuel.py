@@ -60,17 +60,18 @@ class Fuel_Price(namedtuple('Fuel_Price',
 
     def plot_coal_supply(self, ax):
         """Describe Coal supply of the electric system."""
-        self.needed_production['Coal'].plot(ax=ax, title="Coal supply \
-                              for the electric system (in MMBTu)", label="Coal needs")
-        self.local_production["Coal"].plot(ax=ax, label="Coal producted in Vietnam")
-        self.needed_importation["Coal"].plot(ax=ax, label="Coal imported")
+        (self.needed_production['Coal'] / MBtu).plot(ax=ax,
+                              title="Coal supply for the electric system (in MMBTu)",
+                              label="Coal needs")
+        (self.local_production["Coal"] / MBtu).plot(ax=ax, label="Coal producted in Vietnam")
+        (self.needed_importation["Coal"] / MBtu).plot(ax=ax, label="Coal imported")
 
     def plot_coal_price(self, ax):
         """Describe Coal price of the electric system."""
-        (self.average_price['Coal']*MBtu).plot(ax=ax, title="Coal price (in USD/MMBTu)",
+        (self.average_price['Coal'] * MBtu).plot(ax=ax, title="Coal price (in USD/MMBTu)",
                           label="Average price of Coal for the electric system")
-        (self.local_prices['Coal']*MBtu).plot(ax=ax, label="Coal produced in Vietnam")
-        (self.international_prices["Coal"]*MBtu).plot(ax=ax, label="Imported Coal (Australia)")
+        (self.local_prices['Coal'] * MBtu).plot(ax=ax, label="Coal produced in Vietnam")
+        (self.international_prices["Coal"] / MBtu).plot(ax=ax, label="Imported Coal (Australia)")
 
     def plot_coal_information(self, filename):
         """Describe Coal origin and price of the electric system."""
@@ -86,11 +87,11 @@ class Fuel_Price(namedtuple('Fuel_Price',
 
     def plot_gas_supply(self, ax):
         """Describe Gas supply of the electric system."""
-        self.needed_production['Gas'].plot(ax=ax,
+        (self.needed_production['Gas'] / MBtu).plot(ax=ax,
                               title="Gas supply for the electric system (in MMBTu)",
                               label="Gas needs")
-        self.local_production["Gas"].plot(ax=ax, label="Gas producted in Vietnam")
-        self.needed_importation["Gas"].plot(ax=ax, label="Gas imported")
+        (self.local_production["Gas"] / MBtu).plot(ax=ax, label="Gas producted in Vietnam")
+        (self.needed_importation["Gas"] / MBtu).plot(ax=ax, label="Gas imported")
 
     def plot_gas_price(self, ax):
         """Describe Gas price of the electric system."""
