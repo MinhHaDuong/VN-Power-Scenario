@@ -71,7 +71,7 @@ class Fuel_Price(namedtuple('Fuel_Price',
         (self.average_price['Coal'] * MBtu).plot(ax=ax, title="Coal price (in USD/MMBTu)",
                           label="Average price of Coal for the electric system")
         (self.local_prices['Coal'] * MBtu).plot(ax=ax, label="Coal produced in Vietnam")
-        (self.international_prices["Coal"] / MBtu).plot(ax=ax, label="Imported Coal (Australia)")
+        (self.international_prices["Coal"] * MBtu).plot(ax=ax, label="Imported Coal (Australia)")
 
     def plot_coal_information(self, filename):
         """Describe Coal origin and price of the electric system."""

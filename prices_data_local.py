@@ -49,3 +49,5 @@ for i in range(start_year, end_year+1):
 
 local_prices = pd.DataFrame({'Coal': interpol_coal_price, 'Gas': interpol_gas_price},
                             index=range(start_year, end_year+1))
+
+print(local_prices)
