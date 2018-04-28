@@ -71,7 +71,7 @@ clean:
 
 cleaner: clean
 	find . -type f -name '*.pyc' -delete
-	rm -f Run.txt param_reference.txt table-price-run.txt
+	rm -f Run.txt param_reference.txt table-price-run.txt production_needed_baseline.txt
 	rm -rf __pycache__
 	rm -f *.bak
 	rm -rf .coverage coverage.xml htmlcov
