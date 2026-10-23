@@ -34,6 +34,7 @@ To clarify column names.
     because the capacity factors are not comparable, neither are the investment costs
 """
 
+import warnings
 from functools import lru_cache
 
 # import time
@@ -47,7 +48,7 @@ import numpy as np
 #https://github.com/statsmodels/statsmodels/issues/3814
 #Should be fixed in statsmodels version 0.9
 #
-np.warnings.filterwarnings("ignore")
+warnings.filterwarnings("ignore")
 
 pd.set_option('display.max_rows', 100)
 pd.set_option('display.max_columns', 20)

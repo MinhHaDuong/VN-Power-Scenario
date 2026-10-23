@@ -6,9 +6,8 @@
 # Creative Commons Attribution-ShareAlike 4.0 International
 #
 
-PYTHON = python3
-COVERAGE = python3-coverage
-PYTEST = py.test-3
+# Bare inside an activated env or without uv; otherwise `uv run --frozen` (uv.lock is authoritative).
+RUN := $(if $(or $(VIRTUAL_ENV),$(shell command -v uv >/dev/null 2>&1 || echo nouv)),,uv run --frozen)
 
 # Tables and figures for the paper on CCS
 tables-CCS = table-parameters.fwf table-comparison.fwf run_sensitivity_analysis_ccs.txt
@@ -37,29 +36,29 @@ table-comparison.fwf: run_baseline_vs_ccs.txt
 
 %.txt: %.py
 	@-sed -i "s/VERBOSE = True/VERBOSE = False/" init.py
-	$(PYTHON) $< summarize > $@
+	$(RUN) python3 $< summarize > $@
 
 %.pdf: %.py
-	$(PYTHON) $< plot $@
+	$(RUN) python3 $< plot $@
 
 %.png: %.py
-	$(PYTHON) $< plot $@
+	$(RUN) python3 $< plot $@
 
 test: cleaner
-	$(PYTEST) --doctest-modules
+	$(RUN) pytest --doctest-modules
 
 coverage: coverage.xml
-	$(COVERAGE) html
+	$(RUN) coverage html
 	see htmlcov/index.html
 
 coverage.xml:
-	$(PYTEST) --doctest-modules --cov=. --cov-report term-missing --cov-report xml
+	$(RUN) pytest --doctest-modules --cov=. --cov-report term-missing --cov-report xml
 
 regtest-reset:
-	$(PYTEST) --regtest-reset
+	$(RUN) pytest --regtest-reset
 
 lint:
-	pylint3 *py
+	$(RUN) pylint *py
 
 docstyle:
 	# Ignored messages:
@@ -67,10 +66,10 @@ docstyle:
 	# D105: Missing docstring in magic method                               why does it need a docstring ?
 	# D203: 1 blank line required before class docstring                    bug in the tool
 	# D213: Multi-line docstring summary should start at the second line    """We choose D212 ;)
-	pydocstyle --ignore=D102,D105,D203,D213 *py
+	$(RUN) pydocstyle --ignore=D102,D105,D203,D213 *py
 
 codestyle:
-	pycodestyle *py
+	$(RUN) pycodestyle *py
 
 .PHONY: test regtest-reset lint docstyle codestyle clean cleaner
 
