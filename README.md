@@ -16,13 +16,15 @@ make
 
 ## Installation and use:
 
- The code is in Python 3.6
+ The code is in Python 3 (locked on 3.11)
 it imports  hashlib, sys, copy, functools  from the standard library
-it imports  pandas, mathplotlib, numpy  from the scientific python core packages
+it imports  pandas, matplotlib, numpy, scipy  from the scientific python core packages
 it uses statsmodels from the PyPI
 
-To install dependencies:
-sudo -H pip3 install -r requirements.txt
+Dependencies are declared in `pyproject.toml` and locked in `uv.lock`
+(Python 3.11, pandas < 2, numpy < 2: the code uses `DataFrame.append`).
+With [uv](https://docs.astral.sh/uv/) installed, `uv sync` builds the `.venv`;
+`make` runs every recipe through `uv run --frozen`, so no activation is needed.
 
 The builds uses a standard  `Makefile`  with
 

@@ -1,0 +1,28 @@
+[project]
+name = "vn-power-scenario"
+version = "0.0.0"
+description = "A recursive model of electricity production in Vietnam"
+readme = "README.md"
+requires-python = ">=3.11,<3.12"
+dependencies = [
+    "matplotlib",
+    "numpy<2",
+    "pandas<2",
+    "scipy",
+    "statsmodels",
+]
+
+[dependency-groups]
+dev = [
+    "pytest",
+    "pytest-xdist",
+    "pytest-regtest",
+    "pytest-cov",
+    "ruff>=0.15,<0.16",
+    "pylint",
+    "pydocstyle",
+    "pycodestyle",
+]
+
+[tool.uv]
+package = false

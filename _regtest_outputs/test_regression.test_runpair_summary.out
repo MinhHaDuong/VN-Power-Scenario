@@ -1,22 +1,22 @@
 *******************
 
-Parameters #70c73a: Reference - median values from OpenEI and IPCC reviews, d=6%, CO2=100$ in 2050
+Parameters #4142fb: Reference - median values from OpenEI and IPCC reviews, d=6%, CO2=100$ in 2050
 
-BAU = Power development program #d963: Baseline - PDP7A extended
-ALT = Power development program #dad4: With CCS
+BAU = Power development program #b8e4: Baseline - PDP7A extended
+ALT = Power development program #9623: With CCS
 
 Present value cost of avoided emissions: 27.3 USD/tCO2eq
 
                Baseline High CCS difference    Units
-Power produced     6385     6385          0      Twh
+Power produced   6386.0   6386.0        0.0      Twh
 System LCOE        60.5     69.9        9.4  USD/MWh
 Total cost          386      446         60   bn USD
- Construction       211      268         57   bn USD
+ Construction       211      269         58   bn USD
  Fuel cost          109      113          4   bn USD
  O&M                 75       80          5   bn USD
  Salvage value       -9      -15         -6   bn USD
 CO2 emissions      11.1      8.9       -2.2  GtCO2eq
-CO2 capture           0      2.7        2.7    GtCO2
+CO2 capture         0.0      2.7        2.7    GtCO2
 CO2 cost            173      139        -34   bn USD
 Cost with CO2       559      585         26   bn USD
 

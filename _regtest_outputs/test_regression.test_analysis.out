@@ -1,24 +1,24 @@
 *******************
 
-Parameters #70c73a: Reference - median values from OpenEI and IPCC reviews, d=6%, CO2=100$ in 2050
+Parameters #4142fb: Reference - median values from OpenEI and IPCC reviews, d=6%, CO2=100$ in 2050
 
-BAU = Power development program #d963: Baseline - PDP7A extended
-ALT = Power development program #dad4: With CCS
+BAU = Power development program #b8e4: Baseline - PDP7A extended
+ALT = Power development program #9623: With CCS
 
 Present value cost of avoided emissions: 27.3 USD/tCO2eq
 
-                 BAU   ALT difference    Units
-Power produced  6385  6385          0      Twh
-System LCOE     60.5  69.9        9.4  USD/MWh
-Total cost       386   446         60   bn USD
- Construction    211   268         57   bn USD
- Fuel cost       109   113          4   bn USD
- O&M              75    80          5   bn USD
- Salvage value    -9   -15         -6   bn USD
-CO2 emissions   11.1   8.9       -2.2  GtCO2eq
-CO2 capture        0   2.7        2.7    GtCO2
-CO2 cost         173   139        -34   bn USD
-Cost with CO2    559   585         26   bn USD
+                   BAU     ALT difference    Units
+Power produced  6386.0  6386.0        0.0      Twh
+System LCOE       60.5    69.9        9.4  USD/MWh
+Total cost         386     446         60   bn USD
+ Construction      211     269         58   bn USD
+ Fuel cost         109     113          4   bn USD
+ O&M                75      80          5   bn USD
+ Salvage value      -9     -15         -6   bn USD
+CO2 emissions     11.1     8.9       -2.2  GtCO2eq
+CO2 capture        0.0     2.7        2.7    GtCO2
+CO2 cost           173     139        -34   bn USD
+Cost with CO2      559     585         26   bn USD
 
 Emissions by source (ktCO2eq)
                BAU     ALT  difference
@@ -52,25 +52,25 @@ Carbon Captured (Mt)
 
 *******************
 
-Parameters #ba31ff: Discount 8%
+Parameters #38e793: Discount 8%
 
-BAU = Power development program #d963: Baseline - PDP7A extended
-ALT = Power development program #dad4: With CCS
+BAU = Power development program #b8e4: Baseline - PDP7A extended
+ALT = Power development program #9623: With CCS
 
 Present value cost of avoided emissions: 17.3 USD/tCO2eq
 
-                 BAU   ALT difference    Units
-Power produced  4921  4921          0      Twh
-System LCOE     64.4  72.1        7.7  USD/MWh
-Total cost       317   355         38   bn USD
- Construction    180   216         36   bn USD
- Fuel cost        84    86          2   bn USD
- O&M              57    61          4   bn USD
- Salvage value    -5    -8         -3   bn USD
-CO2 emissions   11.1   8.9       -2.2  GtCO2eq
-CO2 capture        0   2.7        2.7    GtCO2
-CO2 cost         119    99        -20   bn USD
-Cost with CO2    436   454         18   bn USD
+                   BAU     ALT difference    Units
+Power produced  4922.0  4921.0       -1.0      Twh
+System LCOE       64.4    72.1        7.7  USD/MWh
+Total cost         317     355         38   bn USD
+ Construction      180     216         36   bn USD
+ Fuel cost          84      86          2   bn USD
+ O&M                57      61          4   bn USD
+ Salvage value      -5      -8         -3   bn USD
+CO2 emissions     11.1     8.9       -2.2  GtCO2eq
+CO2 capture        0.0     2.7        2.7    GtCO2
+CO2 cost           119      99        -20   bn USD
+Cost with CO2      436     454         18   bn USD
 
 Emissions by source (ktCO2eq)
                BAU     ALT  difference
@@ -104,25 +104,25 @@ Carbon Captured (Mt)
 
 *******************
 
-Parameters #e4f646: Discount 4%
+Parameters #7c637e: Discount 4%
 
-BAU = Power development program #d963: Baseline - PDP7A extended
-ALT = Power development program #dad4: With CCS
+BAU = Power development program #b8e4: Baseline - PDP7A extended
+ALT = Power development program #9623: With CCS
 
 Present value cost of avoided emissions: 43.6 USD/tCO2eq
 
-                 BAU   ALT difference    Units
-Power produced  8581  8581          0      Twh
-System LCOE     56.4  67.6       11.2  USD/MWh
-Total cost       484   580         96   bn USD
- Construction    253   346         93   bn USD
- Fuel cost       147   153          6   bn USD
- O&M             101   111         10   bn USD
- Salvage value   -16   -29        -13   bn USD
-CO2 emissions   11.1   8.9       -2.2  GtCO2eq
-CO2 capture        0   2.7        2.7    GtCO2
-CO2 cost         258   199        -59   bn USD
-Cost with CO2    742   779         37   bn USD
+                   BAU     ALT difference    Units
+Power produced  8581.0  8581.0        0.0      Twh
+System LCOE       56.4    67.6       11.2  USD/MWh
+Total cost         484     580         96   bn USD
+ Construction      253     346         93   bn USD
+ Fuel cost         147     153          6   bn USD
+ O&M               101     111         10   bn USD
+ Salvage value     -16     -29        -13   bn USD
+CO2 emissions     11.1     8.9       -2.2  GtCO2eq
+CO2 capture        0.0     2.7        2.7    GtCO2
+CO2 cost           258     199        -59   bn USD
+Cost with CO2      742     779         37   bn USD
 
 Emissions by source (ktCO2eq)
                BAU     ALT  difference
@@ -156,25 +156,25 @@ Carbon Captured (Mt)
 
 *******************
 
-Parameters #8234c0: 175% carbon price
+Parameters #3b5783: 175% carbon price
 
-BAU = Power development program #d963: Baseline - PDP7A extended
-ALT = Power development program #dad4: With CCS
+BAU = Power development program #b8e4: Baseline - PDP7A extended
+ALT = Power development program #9623: With CCS
 
 Present value cost of avoided emissions: 27.3 USD/tCO2eq
 
-                 BAU   ALT difference    Units
-Power produced  6385  6385          0      Twh
-System LCOE     60.5  69.9        9.4  USD/MWh
-Total cost       386   446         60   bn USD
- Construction    211   268         57   bn USD
- Fuel cost       109   113          4   bn USD
- O&M              75    80          5   bn USD
- Salvage value    -9   -15         -6   bn USD
-CO2 emissions   11.1   8.9       -2.2  GtCO2eq
-CO2 capture        0   2.7        2.7    GtCO2
-CO2 cost         303   243        -60   bn USD
-Cost with CO2    689   689          0   bn USD
+                   BAU     ALT difference    Units
+Power produced  6386.0  6386.0        0.0      Twh
+System LCOE       60.5    69.9        9.4  USD/MWh
+Total cost         386     446         60   bn USD
+ Construction      211     269         58   bn USD
+ Fuel cost         109     113          4   bn USD
+ O&M                75      80          5   bn USD
+ Salvage value      -9     -15         -6   bn USD
+CO2 emissions     11.1     8.9       -2.2  GtCO2eq
+CO2 capture        0.0     2.7        2.7    GtCO2
+CO2 cost           303     243        -60   bn USD
+Cost with CO2      689     689          0   bn USD
 
 Emissions by source (ktCO2eq)
                BAU     ALT  difference
@@ -208,25 +208,25 @@ Carbon Captured (Mt)
 
 *******************
 
-Parameters #7484a2: Coal and Gas price fall by 3% per year.
+Parameters #46ad7e: Coal and Gas price fall by 3% per year.
 
-BAU = Power development program #d963: Baseline - PDP7A extended
-ALT = Power development program #dad4: With CCS
+BAU = Power development program #b8e4: Baseline - PDP7A extended
+ALT = Power development program #9623: With CCS
 
 Present value cost of avoided emissions: 31.4 USD/tCO2eq
 
-                 BAU   ALT difference    Units
-Power produced  6385  6385          0      Twh
-System LCOE       55  65.8       10.8  USD/MWh
-Total cost       351   420         69   bn USD
- Construction    211   268         57   bn USD
- Fuel cost        74    86         12   bn USD
- O&M              75    80          5   bn USD
- Salvage value    -9   -15         -6   bn USD
-CO2 emissions   11.1   8.9       -2.2  GtCO2eq
-CO2 capture        0   2.7        2.7    GtCO2
-CO2 cost         173   139        -34   bn USD
-Cost with CO2    524   559         35   bn USD
+                   BAU     ALT difference    Units
+Power produced  6386.0  6386.0        0.0      Twh
+System LCOE       55.0    65.8       10.8  USD/MWh
+Total cost         351     420         69   bn USD
+ Construction      211     269         58   bn USD
+ Fuel cost          74      86         12   bn USD
+ O&M                75      80          5   bn USD
+ Salvage value      -9     -15         -6   bn USD
+CO2 emissions     11.1     8.9       -2.2  GtCO2eq
+CO2 capture        0.0     2.7        2.7    GtCO2
+CO2 cost           173     139        -34   bn USD
+Cost with CO2      524     559         35   bn USD
 
 Emissions by source (ktCO2eq)
                BAU     ALT  difference
@@ -260,25 +260,25 @@ Carbon Captured (Mt)
 
 *******************
 
-Parameters #14f89d: CCS construction and OM costs fall by 1.8% per year.
+Parameters #8f8ab1: CCS construction and OM costs fall by 1.8% per year.
 
-BAU = Power development program #d963: Baseline - PDP7A extended
-ALT = Power development program #dad4: With CCS
+BAU = Power development program #b8e4: Baseline - PDP7A extended
+ALT = Power development program #9623: With CCS
 
 Present value cost of avoided emissions: 15.5 USD/tCO2eq
 
-                 BAU   ALT difference    Units
-Power produced  6385  6385          0      Twh
-System LCOE     60.5  65.8        5.3  USD/MWh
-Total cost       386   420         34   bn USD
- Construction    211   247         36   bn USD
- Fuel cost       109   113          4   bn USD
- O&M              75    76          1   bn USD
- Salvage value    -9   -15         -6   bn USD
-CO2 emissions   11.1   8.9       -2.2  GtCO2eq
-CO2 capture        0   2.7        2.7    GtCO2
-CO2 cost         173   139        -34   bn USD
-Cost with CO2    559   559          0   bn USD
+                   BAU     ALT difference    Units
+Power produced  6386.0  6386.0        0.0      Twh
+System LCOE       60.5    65.8        5.3  USD/MWh
+Total cost         386     420         34   bn USD
+ Construction      211     247         36   bn USD
+ Fuel cost         109     113          4   bn USD
+ O&M                75      76          1   bn USD
+ Salvage value      -9     -15         -6   bn USD
+CO2 emissions     11.1     8.9       -2.2  GtCO2eq
+CO2 capture        0.0     2.7        2.7    GtCO2
+CO2 cost           173     139        -34   bn USD
+Cost with CO2      559     559          0   bn USD
 
 Emissions by source (ktCO2eq)
                BAU     ALT  difference
