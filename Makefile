@@ -44,7 +44,7 @@ table-comparison.fwf: run_baseline_vs_ccs.txt
 %.png: %.py
 	$(RUN) python3 $< plot $@
 
-test: cleaner
+test:
 	$(RUN) pytest --doctest-modules
 
 coverage: coverage.xml
