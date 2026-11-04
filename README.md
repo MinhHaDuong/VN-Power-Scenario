@@ -12,15 +12,15 @@ Vietnam's power development plan, one on the sensitivity of the plan's costs to
 international coal and gas prices ("moreGas").
 
 
-## Reproducibility in three steps:
+## Reproducibility in three steps
 ```bash
 git clone https://github.com/MinhHaDuong/VN-Power-Scenario.git
 cd VN-Power-Scenario/
 make
 ```
-This needs [uv](https://docs.astral.sh/uv/); see below.
+This uses [uv](https://docs.astral.sh/uv/) when installed; see below.
 
-## Installation and use:
+## Installation and use
 
 The code is in Python 3 (locked on 3.11).
 It imports hashlib, collections, functools, random, sys, and warnings from the standard library,
@@ -30,7 +30,7 @@ and statsmodels from PyPI.
 Dependencies are declared in `pyproject.toml` and locked in `uv.lock`
 (Python 3.11, pandas < 2, numpy < 2: the code uses `DataFrame.append`).
 With uv installed, `uv sync` builds the `.venv`;
-`make` runs every recipe through `uv run --frozen`, so no activation is needed.
+`make` runs every Python recipe through `uv run --frozen`, so no activation is needed.
 Inside an already activated virtual environment, or where uv is absent,
 recipes run the tools directly.
 
@@ -43,12 +43,13 @@ The build uses a standard `Makefile` with
 +  `make all-moreGas`   build the tables and figures of the international prices paper only.
 
 +  `make test`          run the regression tests, doctests, and scripted tests.
-                        It leaves the working tree as it found it: generated outputs are kept.
+                        It keeps the generated outputs; `git status` stays clean.
 
 +  `make regtest-reset` re-record the expected regression outputs in `_regtest_outputs/`,
                         after a change of results you have checked and accept.
 
-+  `make coverage`      run the tests with coverage and build the HTML report in `htmlcov/`.
++  `make coverage`      build the HTML coverage report in `htmlcov/`; it runs the tests
+                        with coverage unless `coverage.xml` already exists.
 
 +  `make lint`, `make docstyle`, `make codestyle`   run pylint, pydocstyle, and pycodestyle.
 
@@ -56,13 +57,13 @@ The build uses a standard `Makefile` with
 
 +  `make cleaner`       also delete Python caches and coverage files.
 
-Each output is rebuilt only when its own script changes, not when a module it imports
-or a file in `data/` changes. After changing the model or the data, rebuild everything
+Each output is rebuilt when the script that produces it changes, not when a module
+it imports or a file in `data/` changes. After changing the model or the data, rebuild everything
 with `make clean all`.
 
 The generated tables and figures are listed in `.gitignore`.
 
-## Development:
+## Development
 
 `pylintrc` sets the maximum line length to 100.
 pycodestyle reads user settings from `~/.config/pycodestyle`, for instance
@@ -77,7 +78,7 @@ and `test` before each commit. To install it, from the `.git/hooks` directory ru
 `ln ../../pre-commit pre-commit`; skip it with `git commit --no-verify`.
 Note that it uses `git stash`, and that `make cleaner` deletes the generated outputs.
 
-## Directory organization:
+## Directory organization
 
 1. Files in `data/` are raw data collected (PDF, XLS, ODS, CSV, web pages) from the web.
 
@@ -99,7 +100,7 @@ Note that it uses `git stash`, and that `make cleaner` deletes the generated out
 
 9. Files starting with `figure_` plot figures for the papers.
 
-10. `init.py` holds common functions, constants and units.
+10. `init.py` holds common functions, constants, and units.
 
 11. Files starting with `test_` are used by the pytest framework.
 
