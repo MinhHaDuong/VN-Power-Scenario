@@ -6,10 +6,57 @@ A recursive model of electricity production in Vietnam
 All files licensed under the Creative Commons Attribution-ShareAlike 4.0 International,
 see file `LICENSE`, unless noted otherwise.
 
-The model is a recursive simulation based on OSeMOSYS equations. It produces the
-tables and figures of two papers: one on carbon capture and storage (CCS) in
-Vietnam's power development plan, one on the sensitivity of the plan's costs to
-international coal and gas prices ("moreGas").
+## What the model does
+
+The model estimates the costs and CO2 emissions of Vietnam's electricity sector
+from 1975 to 2050 under alternative power development plans. It is a recursive
+simulation with an annual time step, based on OSeMOSYS equations.
+
++ A `Plan` is a year-by-year path of capacity additions and retirements for
+  13 technologies: coal, gas, oil, big hydro, small hydro, biomass, wind, solar,
+  coal with CCS, gas with CCS, biomass with CCS, imports, and pumped storage.
+  The baseline plan is Vietnam's Power Development Plan 7 Adjusted (PDP7A),
+  extended from 2030 to 2050, with past capacities from the EVN 2016 annual report.
+  Nuclear plants planned in PDP7A are replaced by coal, since the nuclear
+  program was suspended in 2016.
++ A `Parameter` set holds the technical and economic assumptions: overnight costs,
+  plant lifetimes, capacity factors, emission factors, fuel prices, discount rate,
+  and carbon price. The reference uses median values from the OpenEI and IPCC
+  reviews, a 6% discount rate, and a carbon price reaching 100 USD/tCO2 in 2050.
++ A `Run` combines a plan and a parameter set. It computes electricity produced,
+  construction, fuel, and O&M costs, salvage value, CO2 emitted and captured,
+  and the system levelized cost of electricity (LCOE). A pair of runs gives the
+  cost difference and the cost of avoided emissions.
+
+## Publications and studies
+
+**Carbon capture and storage.** `make all-CCS` builds the tables and figures of
+
+> Ha-Duong, Minh, and Hoang Anh Nguyen-Trinh. 2017. "Two scenarios for carbon
+> capture and storage in Vietnam." *Energy Policy* 110: 559–569.
+> https://doi.org/10.1016/j.enpol.2017.08.040
+
+The paper refers to this repository under its former name, VN-CSS-Scenario;
+GitHub redirects the old URL here. The With CCS plan keeps coal dominant,
+with CCS deployed from about 2040. In the reference case it raises the system
+LCOE from 60.5 to 69.9 USD/MWh and captures 2.7 GtCO2 to 2050.
+`run_sensitivity_analysis_ccs.py` varies the discount rate, carbon price,
+and other parameters.
+
+**More gas, and international fuel price risk.** `make all-moreGas` builds the
+tables and figures of an unpublished working draft (Minh Ha-Duong, 2018,
+"Diversifying Vietnam electricity mix to reduce CO2 emissions and exposure to
+international coal and gas prices risk"), which extends a student modeling
+project by Alice Duval and Benjamin Vandenbussche (2018, "Diversifier le secteur
+électrique vietnamien par plus de gaz peut-il réduire l'exposition au risque-prix
+des combustibles fossiles ?"). The More gas plan installs as much new gas capacity
+as coal capacity each year. At domestic fuel prices, its system LCOE is
+58.0 USD/MWh against 60.5 for the baseline, a difference the draft judges small
+against fuel price and parameter uncertainty, while emissions fall by 1.4 GtCO2.
+`prices_data_international.py` simulates 100 correlated trajectories of imported
+coal and gas prices (geometric Brownian motion fitted on BP, IEA, and World Bank
+series), and `run_sensitivity_lcoe.py` computes the resulting LCOE distribution
+for both plans.
 
 
 ## Reproducibility in three steps
