@@ -14,8 +14,8 @@ tables-CCS = table-parameters.fwf table-comparison.fwf run_sensitivity_analysis_
 figures-CCS = plan_baseline.pdf plan_with_ccs.pdf figure_capacities.pdf figure_capacities.png
 
 # Tables and figures for the paper on sensitivity analysis to international prices of coal and gas
-tables-moreGas = price_fuel.txt prices_data_international.txt run_sensitivity_lcoe.txt run_baseline_vs_more_gas.txt
-figures-moreGas = plan_more_gas.pdf  figure_prices.pdf price_fuel.pdf run_sensitivity_lcoe.pdf
+tables-moreGas = price_fuel.txt prices_data_international.txt run_sensitivity_lcoe.txt run_baseline_vs_more_gas.txt plan_baseline.txt plan_more_gas.txt parameter_reference.txt
+figures-moreGas = plan_baseline.pdf plan_more_gas.pdf figure_prices.pdf price_fuel.pdf run_sensitivity_lcoe.pdf
 
 
 all-parallel:
