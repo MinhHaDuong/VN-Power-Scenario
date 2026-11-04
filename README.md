@@ -9,7 +9,8 @@ see file `LICENSE`, unless noted otherwise.
 ## What the model does
 
 The model estimates the costs and CO2 emissions of Vietnam's electricity sector
-from 1975 to 2050 under alternative power development plans. It is a recursive
+from 2016 to 2050 under alternative power development plans, starting from the
+installed capacity history since 1975. It is a recursive
 simulation with an annual time step, based on OSeMOSYS equations.
 
 + A `Plan` is a year-by-year path of capacity additions and retirements for
@@ -17,7 +18,7 @@ simulation with an annual time step, based on OSeMOSYS equations.
   coal with CCS, gas with CCS, biomass with CCS, imports, and pumped storage.
   The baseline plan is Vietnam's Power Development Plan 7 Adjusted (PDP7A),
   extended from 2030 to 2050, with past capacities from the EVN 2016 annual report.
-  Nuclear plants planned in PDP7A are replaced by coal, since the nuclear
+  Nuclear plants planned in PDP7A are replaced by gas, since the nuclear
   program was suspended in 2016.
 + A `Parameter` set holds the technical and economic assumptions: overnight costs,
   plant lifetimes, capacity factors, emission factors, fuel prices, discount rate,
@@ -37,8 +38,9 @@ simulation with an annual time step, based on OSeMOSYS equations.
 > https://doi.org/10.1016/j.enpol.2017.08.040
 
 The paper refers to this repository under its former name, VN-CSS-Scenario;
-GitHub redirects the old URL here. The With CCS plan keeps coal dominant,
-with CCS deployed from about 2040. In the reference case it raises the system
+GitHub redirects the old URL here. The With CCS plan (High CCS in the paper)
+keeps coal dominant, with gas CCS pilots in 2024 and 2029 and the conversion
+of coal and gas plants to CCS from 2035 to 2050. In the reference case it raises the system
 LCOE from 60.5 to 69.9 USD/MWh and captures 2.7 GtCO2 to 2050.
 `run_sensitivity_analysis_ccs.py` varies the discount rate, carbon price,
 and other parameters.
@@ -53,10 +55,11 @@ des combustibles fossiles ?"). The More gas plan installs as much new gas capaci
 as coal capacity each year. At domestic fuel prices, its system LCOE is
 58.0 USD/MWh against 60.5 for the baseline, a difference the draft judges small
 against fuel price and parameter uncertainty, while emissions fall by 1.4 GtCO2.
-`prices_data_international.py` simulates 100 correlated trajectories of imported
-coal and gas prices (geometric Brownian motion fitted on BP, IEA, and World Bank
-series), and `run_sensitivity_lcoe.py` computes the resulting LCOE distribution
-for both plans.
+`prices_data_international.py` generates correlated trajectories of imported
+coal and gas prices (geometric Brownian motion fitted on World Bank series;
+BP and EIA series are in `data/` but switched off in the code), and
+`run_sensitivity_lcoe.py` computes the LCOE distribution over 100 such
+trajectories for both plans.
 
 
 ## Reproducibility in three steps
