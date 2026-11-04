@@ -12,7 +12,7 @@
 Up to 2015-12-31, based on historical installed capacity listed in EVN 2016 report
 From 2016 onwards, based on future capacity additions listed in PDP7A
   not including coal plants listed as backup for renewables
-Nuclear replaced by Coal
+Nuclear replaced by Gas
 
 Renewable4 includes small hydro
 
