@@ -43,3 +43,24 @@ target/
 .spyderproject
 
 figure-capacities.py
+
+# Generated paper tables and figures (make all; make clean removes them)
+/table-parameters.fwf
+/table-comparison.fwf
+/figure_capacities.pdf
+/figure_capacities.png
+/figure_prices.pdf
+/parameter_reference.txt
+/plan_baseline.pdf
+/plan_baseline.txt
+/plan_more_gas.pdf
+/plan_more_gas.txt
+/plan_with_ccs.pdf
+/price_fuel.pdf
+/price_fuel.txt
+/prices_data_international.txt
+/run_baseline_vs_ccs.txt
+/run_baseline_vs_more_gas.txt
+/run_sensitivity_analysis_ccs.txt
+/run_sensitivity_lcoe.pdf
+/run_sensitivity_lcoe.txt
